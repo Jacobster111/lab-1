@@ -2,8 +2,9 @@
   <html>
   <head>
       <meta charset="UTF-8">
-      <title>Fixing the "Red" Text Color Bug</title>
+      <title>Lab 1 and 3</title>
       <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.15/lodash.min.js"></script>
+      <script src="lab3.js"></script>
       <style>
           .red-text {
               color: red;
@@ -21,5 +22,15 @@
                 }
         </style>
       </div>
+      <script>
+        // This will wait for the returned Promise to resolve, and do something with the response.
+        fetch('https://httpbin.org/image/jpeg') // Start a download
+        .then(res => res.blob()) // Get the content blob
+        .then(blob => { // Use the content blob
+            const img = '<img src="' + URL.createObjectURL(blob) + '">';
+            document.body.insertAdjacentHTML('afterend', img);
+        })
+        .catch(err => console.error(err));
+      </script>
   </body>
 </html>
